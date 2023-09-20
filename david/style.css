@@ -1,0 +1,57 @@
+body {
+    background-color: azure;
+}
+header {
+    background: linear-gradient(to right, #28476A, #40B5FD);
+    text-align: center;
+}
+.titulo{
+    font-family: fantasy;
+    line-height: 35px;
+}
+nav {
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 25px;
+}
+.general {
+    background: linear-gradient(to right, #28476A, #40B5FD);
+    text-align: center;
+}
+h1 {
+    color: white;
+}
+.h1-nombre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    line-height: 30px;
+}
+.foto {
+    width: 250px;
+    height: 250px;
+    border-radius: 20%;
+    border: 5px solid #FFFFFF;
+}
+h2{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    line-height: 0%;
+}
+.subtitulo {
+    font-style: italic;
+}
+.parrafo {
+    color: white;
+    text-align: justify;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.h2-section{
+    color: #28476A;
+    font-size: 30px;
+}
+ul {
+    color: #28476A;
+}
+p {
+    color: #28476A;
+}
