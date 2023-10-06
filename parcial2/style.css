@@ -126,7 +126,7 @@ section{
     color: grey;
 }
 
-@media (max-width:1520px){
+@media (max-width:1680px){
     .caja1{
         width: 55%;
     }
@@ -140,10 +140,10 @@ section{
         margin-left: 45%;
     }
     .caja4{
-        padding: 20px 150px;
+        padding: 20px 100px;
     }
     .parrafo-caja4{
-        margin-right: 10%;
+        margin-right: 5%;
     }
     
     .parrafo2-caja4{
