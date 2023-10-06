@@ -1,100 +1,218 @@
-body{
-    width: 430px;
-    padding: 0;
-    margin: 0;
+*{
+    box-sizing: border-box;
 }
-.navegacion{
-    padding: 10px 0px 10px 0px;
-    display: table;
-    margin: 3px 215px;
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.barra {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 6px 0;
+.encabezado{
+    text-align: center;
+}
+
+.menu{
+    padding-top:20px;
+    padding-bottom: 30px;
+}
+
+.menu img{
+    width: 30px;
+    height: 25px;
 }
 
 section{
     display: flex;
-    flex-direction: column;
+}
+
+
+.caja1{
+    width: 100vh;
 }
 
 .fondo-titulo{
     display: flex;
     color: white;
     background-color: #2ccc69;
-    margin-left: 20px;
-    width: 400px;
+    width: 620px;
+    margin-left: 44%;
+    padding-top: 30px;
+    padding-bottom: 30px ;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 }
+
 .titulo{
-    font-size: 50px;
-    font-family: monospace;
-    font-weight: bold;
+    display: block;
+    text-align: left;
+    font-size: 4rem;
+    margin: 0;
     line-height: 1;
-    padding-left: 10px;
+    padding: 30px 30px 30px 150px;
+}
+.parrafo{
+    text-align: left;
+    margin-top: 100px;
+    margin-left: 55%;
+    margin-right: 8%;
+    font-family: sans-serif;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
-.parrafo{
-    width: 400px;
-    margin-top: 80px;
-    margin-left: 30px;
-    font-family: sans-serif;
-    line-height: 1.5;
-    font-size: 20px;
+.caja2{
+    min-height: 621px;
 }
 
 .imagen1{
-    padding: 50px 10px 10px 10px;
+    padding-top: 15% ;
 }
+
 .imagen1 img{
-    width: 400px;
-    height: 200px;
-    border-radius: 50px;
+    width: 450px;
+    height: 450px;
     object-fit: cover;
+    border-radius: 50px;
+}
+
+.caja3{
+    width: 100vh;
 }
 
 .imagen2{
-    padding: 100px 10px 50px 10px;
+    padding-top: 10% ;
+    margin-left: 65%;
 }
 
 .imagen2 img{
-    border-radius: 50px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
-    width: 400px;
-    height: 350px;
-}
-.about{
-    width: 400px;
-    padding-left: 20px;
+    border-radius: 50px;
 }
 
-.titulo-about{
-    font-family: monospace;
-    font-size: 30px;
-    line-height: 0;
+.caja4{
+    padding: 20px 80px;
+    width: 100vh;
 }
 
-.parrafo-about{
+.titulo-caja4{
+    font-size: 3rem;
+}
+
+.parrafo-caja4{
     color: grey;
-    line-height: 1.5;
-    font-size: 19px;
+    margin-right: 64%;
+    letter-spacing: 0;
+    line-height: 2;
+    font-size: 1rem;
 }
 
-.parrafo2-about{
-    line-height: 1.5;
-    font-size: 19px;
+.parrafo2-caja4{
+    margin-right: 64%;
+    letter-spacing: 0;
+    line-height: 2;
+    font-size: 1rem;
     font-weight: bold;
 }
 
-.about a{
+.caja4 a{
     color: black;
-    font-size: 40px;
+    font-size: 2rem;
     text-decoration: none;
 }
-.about a:hover{
+
+.caja4 a:hover{
     color: grey;
+}
+
+@media (max-width:1520px){
+    .caja1{
+        width: 55%;
+    }
+    .fondo-titulo{
+        margin-left: 10%;
+    }
+    .parrafo{
+        margin-left: 25%;
+    }
+    .imagen2{
+        margin-left: 45%;
+    }
+    .caja4{
+        padding: 20px 150px;
+    }
+    .parrafo-caja4{
+        margin-right: 10%;
+    }
+    
+    .parrafo2-caja4{
+        margin-right: 10%;
+    }
+
+}
+
+@media (max-width:430px){
+    section{
+        flex-direction: column;
+    }
+    .encabezado{
+        width: 430px;
+    }
+
+    .caja1{
+        width: 430px;
+    }
+
+    .fondo-titulo{
+        margin-left: 5%;
+        width: auto;
+        margin-right: 5%;
+        padding-top: 10px;
+        padding-bottom: 10px ;
+    }
+
+    .titulo{
+        font-size: 3rem;
+        padding: 30px 30px 30px 50px;
+    }
+
+    .parrafo{
+        margin-left: 5%;
+        width: auto;
+        margin-right: 5%;
+    }
+
+    .caja2{
+        width: 430px;
+        min-height: 400px;
+    }
+
+    .imagen1{
+        margin-left: 5%;
+    }
+
+    .imagen1 img{
+        width: 390px;
+        height: 200px;
+    }
+
+    .caja3{
+        width: 430px;
+    }
+    
+    .imagen2{
+        margin-left: 5%;
+        padding-top: none;
+    }
+
+    .imagen2 img{
+        width: 390px;
+        height: 390px;
+    }
+
+    .caja4{
+        padding: 0% 0% 5% 5%;
+        width: 430px;
+    }
 }
