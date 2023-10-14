@@ -6,7 +6,7 @@
     <title>lab7</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="obtenerDatos()">
     <header>
         <nav class="navbar">
             <ul>
@@ -94,9 +94,9 @@
             </tr>
             <tr>
                 <td>Un botón que me lleve a un video de youtube (con js) (uso de href en js)</td>
-                <td>https://www.youtube.com/watch?v=dQw4w9WgXcQ</td>
+                <td>Video El Rick</td>
                 <td>
-                    <button onclick="accederPagina()">Acceder a la Pagina</button>
+                    <button onclick="accederPagina()">Acceder al Video</button>
                 </td>
             </tr>
             <tr>
@@ -147,7 +147,7 @@
                 <td>busque un API público y mapee al menos 3 datos dentro de la tabla </td>
                 <td>API de Personajes de Juego</td>
                 <td>
-                    <button onclick="obtenerDatos()">Mapear Personaje</button>
+                    <button onclick="mapearPersonajes()">Mapear Personaje</button>
                 </td>
             </tr>
             <tr>
