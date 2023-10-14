@@ -9,7 +9,6 @@ fetch(url)
     nombre.innerHTML = `${data.data[3].name}`;
     colegio.innerHTML = `${data.data[3].school}`;
     imagen.innerHTML = `<img src=${data.data[3].imageSchool}></img>`;
-    console.log(data);
 })
 .catch(err=>console.log(err))
 
