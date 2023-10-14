@@ -26,6 +26,9 @@ section {
     display: flex;
 }
 
+.seccion1{
+    background-color: white;
+}
 
 .caja1 {
     width: 100vh;
@@ -56,7 +59,6 @@ section {
     text-align: left;
     margin-top: 100px;
     margin-left: 55%;
-    margin-right: 8%;
     font-family: sans-serif;
     line-height: 1.6;
     font-size: 1rem;
@@ -87,8 +89,8 @@ section {
 }
 
 .imagen2 img {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     object-fit: cover;
     border-radius: 50px;
 }
@@ -128,18 +130,36 @@ section {
     color: grey;
 }
 
-@media (max-width:1680px) {
+.seccion2{
+    color: black;
+    background-color: #f2f2f2;
+    display: block;
+}
+.cajas{
+    display: flex;
+}
+.caja5{
+    width: 100vh;
+}
+.cuadro{
+    width: 50%;
+    background-color: white;
+    margin-left: 10%;
+    height: 200px;
+}
+
+@media (min-width:1366px) {
     .caja1 {
         width: 50%;
     }
 
     .fondo-titulo {
-        width: 620px;
+        width: 550px;
         margin-left: 10%;
     }
 
     .titulo{
-        padding: 30px 30px 30px 150px;
+        padding: 25px 25px 25px 100px;
     }
 
     .parrafo {
@@ -157,7 +177,7 @@ section {
     }
 
     .imagen2 {
-        margin-left: 45%;
+        margin-left: 30%;
     }
 
     .caja4 {
