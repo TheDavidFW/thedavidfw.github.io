@@ -1,0 +1,2144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>David Feng Wu | Full Stack Portfolio</title>
+  <meta
+    name="description"
+    content="Full stack portfolio for David Feng Wu: web apps, mobile apps, APIs, cloud deployments, and MCP connector systems."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b0f;
+      --bg-2: #0d1118;
+      --bg-3: #111722;
+      --panel: #101620;
+      --panel-2: #151d29;
+      --line: #243044;
+      --line-2: #334057;
+      --text: #f3f7fb;
+      --muted: #9ba8b8;
+      --quiet: #657286;
+      --cyan: #44d7ff;
+      --cyan-2: #8cf3ff;
+      --green: #80e6a0;
+      --amber: #f2b95d;
+      --coral: #ff8566;
+      --violet: #b9a4ff;
+      --radius: 8px;
+      --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--mono);
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        linear-gradient(90deg, rgba(68, 215, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(68, 215, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(145deg, #080b0f 0%, #0c1119 46%, #090b0f 100%);
+      background-size: 64px 64px, 64px 64px, auto;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    ::selection {
+      color: #051018;
+      background: var(--cyan);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 999;
+      transform: translateY(-140%);
+      padding: 8px 12px;
+      color: #061019;
+      background: var(--cyan);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      height: 64px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 11, 15, 0.82);
+      backdrop-filter: blur(18px);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .site-nav.is-scrolled {
+      border-color: rgba(68, 215, 255, 0.18);
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.32);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--cyan);
+    }
+
+    .nav-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1px solid rgba(68, 215, 255, 0.55);
+      border-radius: 6px;
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.78rem;
+      transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .nav-action:hover,
+    .nav-action:focus-visible {
+      color: #051018;
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .language-switch {
+      display: flex;
+      padding: 2px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--bg-2);
+    }
+
+    .language-switch button {
+      width: 38px;
+      min-height: 30px;
+      padding: 0;
+      border: 0;
+      border-radius: 4px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .language-switch button[aria-pressed="true"] {
+      color: #051018;
+      background: var(--cyan);
+    }
+
+    .language-switch button:focus-visible {
+      outline: 2px solid var(--cyan-2);
+      outline-offset: 3px;
+    }
+
+    main {
+      position: relative;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 120px 0 72px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(8, 11, 15, 0.9) 100%);
+    }
+
+    .symbol-field {
+      position: absolute;
+      inset: 64px 0 0 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .float-symbol {
+      position: absolute;
+      bottom: -32px;
+      color: rgba(68, 215, 255, 0.34);
+      font-size: 0.8rem;
+      animation: float-symbol var(--duration, 14s) linear infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes float-symbol {
+      0% {
+        transform: translate3d(0, 40px, 0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      82% {
+        opacity: 0.55;
+      }
+      100% {
+        transform: translate3d(var(--drift, 24px), -105vh, 0);
+        opacity: 0;
+      }
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1.06fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      max-width: 680px;
+      margin-bottom: 18px;
+      font-size: 4.3rem;
+      line-height: 1.02;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .typed-line {
+      height: 3.6em;
+      display: flex;
+      align-items: center;
+      margin-bottom: 28px;
+      color: var(--text);
+      font-size: 0.96rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      margin-left: 3px;
+      background: var(--cyan);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(16, 22, 32, 0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+
+    .btn-primary {
+      color: #051018;
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--cyan-2);
+      border-color: var(--cyan-2);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(16, 22, 32, 0.74);
+      font-size: 0.72rem;
+    }
+
+    .hero-stage {
+      position: relative;
+    }
+
+    .terminal {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: #0d1117;
+      box-shadow: var(--shadow);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #151b24;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .dot-red {
+      background: #ff5f57;
+    }
+
+    .dot-yellow {
+      background: #febc2e;
+    }
+
+    .dot-green {
+      background: #28c840;
+    }
+
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: var(--quiet);
+      font-size: 0.72rem;
+    }
+
+    .terminal-body {
+      min-height: 390px;
+      padding: 20px;
+      font-size: 0.78rem;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 8px;
+      min-width: 0;
+      margin: 0 0 6px;
+      white-space: nowrap;
+    }
+
+    .prompt {
+      flex: 0 0 auto;
+      color: var(--cyan-2);
+    }
+
+    .cmd {
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .t-line .val {
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .out {
+      color: var(--muted);
+    }
+
+    .key {
+      color: #7bcfff;
+    }
+
+    .val {
+      color: var(--green);
+    }
+
+    .terminal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .terminal-tile {
+      min-height: 86px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .terminal-tile strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+      font-size: 0.78rem;
+    }
+
+    .terminal-tile span {
+      color: var(--quiet);
+      font-size: 0.7rem;
+    }
+
+    .section {
+      padding: 90px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.55fr);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .section-label::before {
+      content: "//";
+      color: var(--quiet);
+    }
+
+    .section h2 {
+      margin-bottom: 0;
+      font-size: 2.6rem;
+      line-height: 1.12;
+    }
+
+    .section-kicker {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat-card {
+      min-height: 120px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(16, 22, 32, 0.92), rgba(14, 18, 26, 0.9));
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(68, 215, 255, 0.55);
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--cyan);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 24px;
+      margin-bottom: 22px;
+    }
+
+    .filter-button {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(16, 22, 32, 0.72);
+      cursor: pointer;
+      font-size: 0.74rem;
+      transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible,
+    .filter-button.is-active {
+      color: #051018;
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 330px;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: inherit;
+      background: rgba(16, 22, 32, 0.85);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible,
+    .project-card.is-active {
+      transform: translateY(-5px);
+      border-color: var(--card-accent, var(--cyan));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .project-media {
+      position: relative;
+      height: 148px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--card-accent, var(--cyan)) 24%, transparent), transparent 58%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        #121925;
+      background-size: auto, 28px 28px, 28px 28px, auto;
+    }
+
+    .project-logo {
+      position: relative;
+      z-index: 1;
+      max-width: 132px;
+      max-height: 72px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.3));
+    }
+
+    .project-card[data-project="outfit-api"] .project-logo {
+      display: none;
+    }
+
+    .api-mark {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      color: var(--green);
+      background: rgba(0, 0, 0, 0.22);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .project-card[data-project="outfit-api"] .api-mark {
+      display: flex;
+    }
+
+    .project-body {
+      padding: 18px;
+    }
+
+    .project-type {
+      color: var(--card-accent, var(--cyan));
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .project-card h3 {
+      margin: 8px 0 8px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .project-card p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 0 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 0.66rem;
+    }
+
+    .showcase-layout {
+      display: grid;
+      grid-template-columns: minmax(310px, 0.8fr) minmax(0, 1.2fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .detail-panel,
+    .preview-panel,
+    .stack-group,
+    .system-row,
+    .contact-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(16, 22, 32, 0.86);
+      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .detail-panel {
+      padding: 22px;
+    }
+
+    .detail-kicker {
+      color: var(--active-accent, var(--cyan));
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .detail-panel h3 {
+      margin: 10px 0 12px;
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+
+    .detail-panel p {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detail-list li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    .detail-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.7em;
+      left: 0;
+      width: 7px;
+      height: 1px;
+      background: var(--active-accent, var(--cyan));
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .meta-item {
+      padding: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .meta-item span {
+      display: block;
+      color: var(--quiet);
+      font-size: 0.66rem;
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--text);
+      font-size: 0.78rem;
+    }
+
+    .project-live {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .project-status {
+      color: var(--green);
+      font-size: 0.74rem;
+    }
+
+    .project-live a {
+      overflow-wrap: anywhere;
+    }
+
+    .mini-button[href] {
+      text-decoration: none;
+    }
+
+    .mini-button[href]:hover {
+      background: var(--cyan-2);
+    }
+
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+
+    .preview-panel {
+      position: relative;
+      min-height: 560px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .browser-shell {
+      height: 100%;
+      min-height: 522px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: #0b1018;
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 38px;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #121924;
+    }
+
+    .address {
+      flex: 1;
+      overflow: hidden;
+      color: var(--quiet);
+      font-size: 0.7rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .preview-content {
+      min-height: 484px;
+      padding: 20px;
+    }
+
+    .mini-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 210px;
+      gap: 18px;
+      align-items: center;
+      min-height: 190px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-hero h4 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .mini-hero p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .mini-button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 10px;
+      border-radius: 5px;
+      color: #051018;
+      background: var(--active-accent, var(--cyan));
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .mini-visual {
+      min-height: 140px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--active-accent, var(--cyan)) 18%, transparent), transparent),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .mini-visual img {
+      max-width: 150px;
+      max-height: 110px;
+      object-fit: contain;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-card {
+      min-height: 110px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.76rem;
+    }
+
+    .mini-card span {
+      color: var(--quiet);
+      font-size: 0.68rem;
+    }
+
+    .phone-frame {
+      width: min(270px, 100%);
+      min-height: 440px;
+      margin: 0 auto;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      background: #0a0f16;
+      box-shadow: inset 0 0 0 6px #101722;
+    }
+
+    .phone-screen {
+      min-height: 410px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #e8ddcf;
+      color: #2f251f;
+    }
+
+    .phone-top {
+      padding: 16px;
+      background: #5c3d30;
+      color: #fff;
+    }
+
+    .phone-list {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .wardrobe-row {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .cloth-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, #d7a96d, #5c3d30),
+        #ddd;
+    }
+
+    .api-preview {
+      display: grid;
+      gap: 10px;
+    }
+
+    .api-row {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) 70px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 0.74rem;
+    }
+
+    .method {
+      color: #051018;
+      border-radius: 4px;
+      padding: 2px 6px;
+      text-align: center;
+      background: var(--green);
+      font-weight: 700;
+    }
+
+    .method.post {
+      background: var(--amber);
+    }
+
+    .method.delete {
+      background: var(--coral);
+    }
+
+    .status {
+      color: var(--quiet);
+      text-align: right;
+    }
+
+    .connector-preview {
+      display: grid;
+      gap: 14px;
+    }
+
+    .connector-card {
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .connector-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .connector-card span {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stack-group {
+      padding: 20px;
+    }
+
+    .stack-group h3 {
+      margin-bottom: 18px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .skill {
+      margin-bottom: 16px;
+    }
+
+    .skill:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .skill-track {
+      height: 5px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #1b2533;
+    }
+
+    .skill-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .system-map {
+      display: grid;
+      gap: 12px;
+    }
+
+    .system-row {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      min-height: 96px;
+      padding: 18px;
+    }
+
+    .system-row strong {
+      color: var(--cyan);
+      font-size: 0.86rem;
+    }
+
+    .system-row p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.55fr);
+      gap: 30px;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .contact-panel h2 {
+      margin-bottom: 12px;
+    }
+
+    .contact-panel p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .contact-terminal {
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: #0a0f16;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .contact-terminal .key {
+      display: inline-block;
+      min-width: 86px;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--quiet);
+      font-size: 0.72rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-layout,
+      .section-header,
+      .showcase-layout,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stage {
+        order: -1;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+      }
+
+      .project-grid,
+      .stack-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .preview-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 92px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero-layout {
+        gap: 26px;
+      }
+
+      .typed-line {
+        height: 5em;
+      }
+
+      .terminal-body {
+        min-height: 320px;
+        padding: 16px;
+      }
+
+      .terminal-grid,
+      .project-grid,
+      .stack-grid,
+      .stats-grid,
+      .mini-grid,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      .showcase-layout {
+        gap: 14px;
+      }
+
+      .mini-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .system-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#work" data-i18n>Skip to work</a>
+
+  <nav class="site-nav" id="siteNav" aria-label="Primary navigation" data-i18n-aria-label="Primary navigation">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="David Feng Wu portfolio home" data-i18n-aria-label="David Feng Wu portfolio home">
+        <span>{</span> DFW <span>}</span>
+      </a>
+      <div class="nav-links" aria-label="Section links" data-i18n-aria-label="Section links">
+        <a href="#work" data-i18n>Work</a>
+        <a href="#showcase" data-i18n>Showcase</a>
+        <a href="#stack" data-i18n>Stack</a>
+        <a href="#systems" data-i18n>Systems</a>
+      </div>
+      <div class="nav-actions">
+        <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="Language">
+          <button type="button" data-language="es" lang="es" aria-pressed="false" title="Cambiar a español" aria-label="Cambiar a español">ES</button>
+          <button type="button" data-language="en" lang="en" aria-pressed="true" title="Switch to English" aria-label="Switch to English">EN</button>
+        </div>
+        <a class="nav-action" href="#showcase" data-i18n>Mini Site</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="symbol-field" id="symbolField" aria-hidden="true"></div>
+      <div class="shell hero-layout">
+        <div class="hero-copy-block reveal">
+          <div class="eyebrow" data-i18n>Full Stack Developer</div>
+          <h1 id="heroTitle">David <span>Feng</span> Wu</h1>
+          <p class="hero-copy" data-i18n>
+            Portfolio of practical systems across web, mobile, backend, cloud, and AI connector work.
+            Built with React, FastAPI, Expo, Docker, Supabase, and MCP.
+          </p>
+          <div class="typed-line">
+            <span id="typedText">Building full stack products.</span><span class="cursor"></span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work" data-i18n>Explore Work -></a>
+            <a class="btn" href="#stack" data-i18n>Stack Map</a>
+          </div>
+          <div class="chip-row" aria-label="Core technologies" data-i18n-aria-label="Core technologies">
+            <span class="chip">React + Vite</span>
+            <span class="chip">React Native + Expo</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Docker</span>
+            <span class="chip">MCP</span>
+            <span class="chip">Supabase</span>
+          </div>
+        </div>
+
+        <div class="hero-stage reveal">
+          <div class="terminal" aria-label="Portfolio terminal overview" data-i18n-aria-label="Portfolio terminal overview">
+            <div class="terminal-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="terminal-title">david@portfolio - zsh</span>
+            </div>
+            <div class="terminal-body">
+              <p class="t-line"><span class="prompt">$</span><span class="cmd">portfolio status</span></p>
+              <p class="t-line out"><span class="key" data-i18n>projects</span><span>:</span><span class="val" data-i18n>5 featured systems</span></p>
+              <p class="t-line out"><span class="key" data-i18n>range</span><span>:</span><span class="val" data-i18n>web / mobile / API / connector</span></p>
+              <br />
+              <p class="t-line"><span class="prompt">$</span><span class="cmd">portfolio projects</span></p>
+              <p class="t-line out">Radiadores THT / FitChat MCP</p>
+              <p class="t-line out">Outfit Planner: App, Web, API</p>
+              <div class="terminal-grid" aria-label="Work summary" data-i18n-aria-label="Work summary">
+                <div class="terminal-tile">
+                  <strong data-i18n>Catalog systems</strong>
+                  <span data-i18n>Public storefronts plus admin flows for data-heavy product work.</span>
+                </div>
+                <div class="terminal-tile">
+                  <strong data-i18n>Connector systems</strong>
+                  <span data-i18n>Remote MCP URLs, token flows, Garmin, Strava, and assistant tools.</span>
+                </div>
+                <div class="terminal-tile">
+                  <strong data-i18n>Mobile products</strong>
+                  <span data-i18n>Expo app surfaces for wardrobe, outfits, calendar, and membership.</span>
+                </div>
+                <div class="terminal-tile">
+                  <strong data-i18n>Backend APIs</strong>
+                  <span data-i18n>FastAPI, PostgreSQL, Stripe, Cloudinary, and image processing.</span>
+                </div>
+              </div>
+              <p class="t-line" style="margin-top:18px"><span class="prompt">$</span><span class="cmd">portfolio explore</span><span class="cursor"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="workTitle">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-label" data-i18n>Selected Work</div>
+            <h2 id="workTitle" data-i18n>Selected Projects</h2>
+          </div>
+          <p class="section-kicker" data-i18n>
+            Radiadores THT, FitChat MCP, and Outfit Planner: web platforms, mobile experiences,
+            and the APIs that connect them.
+          </p>
+        </div>
+
+        <div class="stats-grid reveal" aria-label="Portfolio metrics" data-i18n-aria-label="Portfolio metrics">
+          <div class="stat-card">
+            <strong>5</strong>
+            <span data-i18n>Featured project surfaces</span>
+          </div>
+          <div class="stat-card">
+            <strong>3</strong>
+            <span data-i18n>Frontend runtimes represented</span>
+          </div>
+          <div class="stat-card">
+            <strong>2</strong>
+            <span data-i18n>FastAPI-backed product systems</span>
+          </div>
+          <div class="stat-card">
+            <strong>1</strong>
+            <span data-i18n>Remote MCP connector ecosystem</span>
+          </div>
+        </div>
+
+        <div class="filter-row reveal" id="filters" aria-label="Filter projects" data-i18n-aria-label="Filter projects">
+          <button class="filter-button is-active" type="button" data-filter="all" data-i18n>All</button>
+          <button class="filter-button" type="button" data-filter="web">Web</button>
+          <button class="filter-button" type="button" data-filter="api">API</button>
+          <button class="filter-button" type="button" data-filter="mobile" data-i18n>Mobile</button>
+          <button class="filter-button" type="button" data-filter="connector" data-i18n>Connector</button>
+        </div>
+
+        <div class="project-grid reveal" id="projectGrid" aria-label="Project cards" data-i18n-aria-label="Project cards"></div>
+      </div>
+    </section>
+
+    <section class="section" id="showcase" aria-labelledby="showcaseTitle">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-label" data-i18n>Mini Site</div>
+            <h2 id="showcaseTitle" data-i18n>A focused view inside the portfolio</h2>
+          </div>
+          <p class="section-kicker" data-i18n>
+            A closer look at the products, their features, and the technology behind them.
+          </p>
+        </div>
+
+        <div class="showcase-layout reveal">
+          <aside class="detail-panel" id="detailPanel" aria-live="polite"></aside>
+          <div class="preview-panel" id="previewPanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stack" aria-labelledby="stackTitle">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-label" data-i18n>Tech Stack</div>
+            <h2 id="stackTitle" data-i18n>Tools used across the work</h2>
+          </div>
+          <p class="section-kicker" data-i18n>
+            Frontend craft, backend APIs, mobile product work, and cloud deployment are shown as one operating range.
+          </p>
+        </div>
+
+        <div class="stack-grid reveal">
+          <div class="stack-group">
+            <h3 data-i18n>Frontend + Mobile</h3>
+            <div class="skill" data-skill="92">
+              <div class="skill-head"><span>React / Vite</span><span>92%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="86">
+              <div class="skill-head"><span>React Native / Expo</span><span>86%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="84">
+              <div class="skill-head"><span>TypeScript / TSX</span><span>84%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="82">
+              <div class="skill-head"><span data-i18n>Tailwind / CSS Systems</span><span>82%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+          </div>
+
+          <div class="stack-group">
+            <h3 data-i18n>Backend + APIs</h3>
+            <div class="skill" data-skill="90">
+              <div class="skill-head"><span>FastAPI</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="86">
+              <div class="skill-head"><span>Node.js / TypeScript</span><span>86%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="78">
+              <div class="skill-head"><span>Java</span><span>78%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="88">
+              <div class="skill-head"><span>REST APIs</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+          </div>
+
+          <div class="stack-group">
+            <h3 data-i18n>Cloud + Data</h3>
+            <div class="skill" data-skill="88">
+              <div class="skill-head"><span>Docker / Compose</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="84">
+              <div class="skill-head"><span>PostgreSQL / Supabase</span><span>84%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="80">
+              <div class="skill-head"><span>Vercel / Oracle Cloud</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill" data-skill="82">
+              <div class="skill-head"><span>Cloudinary / Stripe / MCP</span><span>82%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chip-row reveal" style="margin-top:24px" aria-label="Additional technologies" data-i18n-aria-label="Additional technologies">
+          <span class="chip">Python</span>
+          <span class="chip">SQLAlchemy</span>
+          <span class="chip">OpenCV</span>
+          <span class="chip">U2Net</span>
+          <span class="chip">Stripe</span>
+          <span class="chip">Cloudinary</span>
+          <span class="chip">Supabase Auth</span>
+          <span class="chip">Oracle VPS</span>
+          <span class="chip">GitHub Actions</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="systems" aria-labelledby="systemsTitle">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-label" data-i18n>Systems Thinking</div>
+            <h2 id="systemsTitle" data-i18n>From interface to deployment</h2>
+          </div>
+          <p class="section-kicker" data-i18n>
+            The strongest pattern across these projects is full ownership of the path from user action to stored data.
+          </p>
+        </div>
+
+        <div class="system-map reveal">
+          <div class="system-row">
+            <strong data-i18n>Product Surfaces</strong>
+            <p data-i18n>Catalogs, dashboards, membership pages, wardrobe screens, outfit builders, and connector setup flows.</p>
+          </div>
+          <div class="system-row">
+            <strong data-i18n>Data + Auth</strong>
+            <p data-i18n>Supabase Auth, JWT flows, PostgreSQL models, token bundles, profile storage, and admin roles.</p>
+          </div>
+          <div class="system-row">
+            <strong data-i18n>Media + Payments</strong>
+            <p data-i18n>Cloudinary image storage, background removal, mobile image selection, and Stripe subscription webhooks.</p>
+          </div>
+          <div class="system-row">
+            <strong data-i18n>Deployment</strong>
+            <p data-i18n>Vercel frontends, Dockerized APIs on Oracle Cloud, Caddy HTTPS, and VPS-hosted MCP endpoints.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contactTitle">
+      <div class="shell">
+        <div class="contact-panel reveal">
+          <div>
+            <div class="section-label" data-i18n>Contact</div>
+            <h2 id="contactTitle" data-i18n>Work archive, not a pitch deck</h2>
+            <p data-i18n>
+              A compact place for the systems, experiments, and product surfaces already built or in progress.
+            </p>
+          </div>
+          <div class="contact-terminal" aria-label="Portfolio metadata" data-i18n-aria-label="Portfolio metadata">
+            <p><span class="key" data-i18n>name</span> David Feng Wu</p>
+            <p><span class="key" data-i18n>mode</span> <span data-i18n>portfolio showcase</span></p>
+            <p><span class="key" data-i18n>focus</span> <span data-i18n>full stack systems</span></p>
+            <p><span class="key" data-i18n>updated</span> 2026-11-12</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>&copy; 2026 David Feng Wu</span>
+      <span data-i18n>Full Stack Portfolio</span>
+    </div>
+  </footer>
+
+  <script src="assets/i18n.js"></script>
+  <script>
+    const projects = [
+      {
+        id: "radiadores",
+        title: "Radiadores THT",
+        type: "Business Website + Catalog + Admin",
+        category: ["web", "api"],
+        accent: "#44d7ff",
+        logo: "assets/radiadores-logo.png",
+        summary: "Live website for Radiadores THT in Panama, with an authenticated automotive catalog, OEM search, customer inquiries, and an administration platform.",
+        url: "https://www.radiadorestht.com",
+        website: "www.radiadorestht.com",
+        tags: ["React", "Vite", "FastAPI", "SQLAlchemy", "Supabase", "Cloudinary", "Docker", "Oracle Cloud", "Caddy", "Vercel"],
+        highlights: [
+          "Business website with product lines, company information, and contact inquiries with automatic email confirmation.",
+          "Authenticated catalog with vehicle filters, OEM and product-code search, compatibility details, and image previews.",
+          "Administration for products, brands, catalog customers, browser sessions, and access activity, with role-based permissions.",
+          "React frontend on Vercel and FastAPI backend on Oracle Cloud, running in Docker behind Caddy HTTPS, with Supabase and Cloudinary."
+        ],
+        meta: [
+          ["Frontend", "React + Vite"],
+          ["API", "FastAPI"],
+          ["Data", "Supabase Postgres"],
+          ["Media", "Cloudinary"],
+          ["Frontend Hosting", "Vercel"],
+          ["API Hosting", "Oracle Cloud + Docker + Caddy"]
+        ],
+        preview: "radiadores"
+      },
+      {
+        id: "mcp",
+        title: "FitChat MCP",
+        type: "Remote Connector",
+        category: ["web", "connector", "api"],
+        accent: "#80e6a0",
+        logo: "assets/fitchat-mcp-logo.svg",
+        summary: "Remote MCP connector ecosystem for Garmin and Strava training data, giving assistants a private URL for sports queries.",
+        url: "https://www.fitchat-mcp.com/",
+        website: "www.fitchat-mcp.com",
+        tags: ["MCP", "TypeScript", "React", "Vite", "Garmin", "Strava", "Supabase"],
+        highlights: [
+          "Separated local Garmin login from remote MCP backend so credentials stay local.",
+          "Generated private MCP links with token replacement and revocation flows.",
+          "Built a web dashboard for provider connection state, docs, account status, and privacy pages."
+        ],
+        meta: [
+          ["Client", "React + TS"],
+          ["Backend", "Node + MCP"],
+          ["Providers", "Garmin / Strava"],
+          ["Infra", "Vercel + VPS"]
+        ],
+        preview: "connector"
+      },
+      {
+        id: "outfit-app",
+        title: "Outfit Planner App",
+        type: "Mobile Product",
+        category: ["mobile", "api"],
+        accent: "#f2b95d",
+        logo: "assets/outfitplanner-logo.png",
+        summary: "Expo mobile app for wardrobe management, outfit collage creation, weekly planning, subscriptions, and profile flows.",
+        tags: ["Expo", "React Native", "TypeScript", "AsyncStorage", "Stripe", "ImagePicker"],
+        highlights: [
+          "Wardrobe screens with category filters, image upload, cloth details, and API-backed refresh flows.",
+          "Outfit collage builder that maps stored cloth images into editable compositions.",
+          "Membership screens wired for free and pro subscription journeys."
+        ],
+        meta: [
+          ["Runtime", "Expo"],
+          ["Language", "TypeScript"],
+          ["Navigation", "Expo Router"],
+          ["Payments", "Stripe RN"]
+        ],
+        preview: "mobile"
+      },
+      {
+        id: "outfit-web",
+        title: "Outfit Planner Web",
+        type: "Web Companion",
+        category: ["web"],
+        accent: "#ff8566",
+        logo: "assets/outfitplanner-logo.png",
+        summary: "React web companion with landing, auth, dashboard, profile, membership, and shared API calls for Outfit Planner.",
+        tags: ["React 19", "Vite", "Tailwind", "Router", "Axios", "Lucide"],
+        highlights: [
+          "Landing page with product benefits, plan cards, membership routing, and account-aware CTAs.",
+          "Dashboard and profile surfaces connected through shared query utilities.",
+          "Visual identity anchored by Outfit Planner assets, wardrobe imagery, and a warm product palette."
+        ],
+        meta: [
+          ["Framework", "React + Vite"],
+          ["Styling", "Tailwind CSS"],
+          ["Routing", "React Router"],
+          ["API", "Axios"]
+        ],
+        preview: "outfitWeb"
+      },
+      {
+        id: "outfit-api",
+        title: "Outfit Planner API",
+        type: "Backend API",
+        category: ["api"],
+        accent: "#b9a4ff",
+        logo: "",
+        summary: "FastAPI and PostgreSQL backend for users, clothes, outfits, schedules, subscriptions, image upload, and background removal.",
+        tags: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Stripe", "Cloudinary", "OpenCV"],
+        highlights: [
+          "Routers for users, clothes, colors, seasons, outfits, schedules, categories, and subscriptions.",
+          "Stripe subscription webhook support and Cloudinary-backed media workflow.",
+          "Background removal service using OpenCV, Pillow, NumPy, and U2Net model helpers."
+        ],
+        meta: [
+          ["Framework", "FastAPI"],
+          ["Database", "PostgreSQL"],
+          ["ORM", "SQLAlchemy"],
+          ["Deploy", "Docker Compose"]
+        ],
+        preview: "api"
+      }
+    ];
+
+    const projectGrid = document.getElementById("projectGrid");
+    const detailPanel = document.getElementById("detailPanel");
+    const previewPanel = document.getElementById("previewPanel");
+    let activeProjectId = projects[0].id;
+    let activeFilter = "all";
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function tagMarkup(tags) {
+      return tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
+    }
+
+    function renderProjects() {
+      const visibleProjects = projects.filter((project) => {
+        return activeFilter === "all" || project.category.includes(activeFilter);
+      });
+
+      projectGrid.innerHTML = visibleProjects.map((project) => `
+        <button
+          class="project-card ${project.id === activeProjectId ? "is-active" : ""}"
+          type="button"
+          data-project="${project.id}"
+          style="--card-accent:${project.accent}"
+          aria-pressed="${project.id === activeProjectId ? "true" : "false"}"
+        >
+          <div class="project-media">
+            ${project.logo ? `<img class="project-logo" src="${project.logo}" alt="${escapeHtml(t("Logo of"))} ${escapeHtml(project.title)}" />` : ""}
+            <span class="api-mark">API</span>
+          </div>
+          <div class="project-body">
+            <span class="project-type">${escapeHtml(t(project.type))}</span>
+            <h3>${escapeHtml(project.title)}</h3>
+            <p>${escapeHtml(t(project.summary))}</p>
+            <div class="tag-list">${tagMarkup(project.tags.slice(0, 4))}</div>
+          </div>
+        </button>
+      `).join("");
+
+      projectGrid.querySelectorAll(".project-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          setActiveProject(card.dataset.project);
+          document.getElementById("showcase").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+
+    function setActiveProject(projectId) {
+      activeProjectId = projectId;
+      const project = projects.find((item) => item.id === projectId) || projects[0];
+      document.documentElement.style.setProperty("--active-accent", project.accent);
+      renderProjects();
+      renderDetail(project);
+      renderPreview(project);
+    }
+
+    function renderDetail(project) {
+      detailPanel.innerHTML = `
+        <div class="detail-kicker">${escapeHtml(t(project.type))}</div>
+        <h3>${escapeHtml(project.title)}</h3>
+        <p>${escapeHtml(t(project.summary))}</p>
+        <div class="tag-list">${tagMarkup(project.tags)}</div>
+        <ul class="detail-list">
+          ${project.highlights.map((item) => `<li>${escapeHtml(t(item))}</li>`).join("")}
+        </ul>
+        <div class="meta-grid">
+          ${project.meta.map(([label, value]) => `
+            <div class="meta-item">
+              <span>${escapeHtml(t(label))}</span>
+              <strong>${escapeHtml(value)}</strong>
+            </div>
+          `).join("")}
+        </div>
+        ${project.url ? `
+          <div class="project-live">
+            <span class="project-status">${escapeHtml(t("Live in production"))}</span>
+            <a class="btn" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.website)}</a>
+          </div>
+        ` : ""}
+      `;
+    }
+
+    function previewRadiadores() {
+      return `
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <a class="address" href="https://www.radiadorestht.com" target="_blank" rel="noopener noreferrer">www.radiadorestht.com</a>
+          </div>
+          <div class="preview-content">
+            <div class="mini-hero">
+              <div>
+                <h4>Radiadores THT</h4>
+                <p data-i18n>Automotive cooling solutions in Panama. Business website, authenticated catalog, OEM search, and customer support.</p>
+                <a class="mini-button" href="https://www.radiadorestht.com" target="_blank" rel="noopener noreferrer" data-i18n>Visit website -></a>
+              </div>
+              <div class="mini-visual">
+                <img src="assets/radiadores-logo.png" alt="Radiadores THT logo" data-i18n-alt="Radiadores THT logo" />
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong data-i18n>Catalog</strong><span data-i18n>Authenticated access, vehicle filters, OEM search, and compatibility details.</span></div>
+              <div class="mini-card"><strong data-i18n>Administration</strong><span data-i18n>Products, brands, customers, sessions, and access activity.</span></div>
+              <div class="mini-card"><strong data-i18n>Production</strong><span data-i18n>Vercel, Oracle Cloud, Docker, Caddy, Supabase, and Cloudinary.</span></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function previewConnector() {
+      return `
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <a class="address" href="https://www.fitchat-mcp.com/" target="_blank" rel="noopener noreferrer">www.fitchat-mcp.com</a>
+          </div>
+          <div class="preview-content">
+            <div class="mini-hero">
+              <div>
+                <h4 data-i18n>Private sports data URL for assistant tools</h4>
+                <p data-i18n>Garmin or Strava connect to one MCP link, then Claude or ChatGPT can query activities, stats, streams, and trends.</p>
+                <a class="mini-button" href="https://www.fitchat-mcp.com/" target="_blank" rel="noopener noreferrer" data-i18n>Visit website -></a>
+              </div>
+              <div class="mini-visual">
+                <img src="assets/fitchat-mcp-logo.svg" alt="FitChat MCP logo" data-i18n-alt="FitChat MCP logo" />
+              </div>
+            </div>
+            <div class="connector-preview" style="margin-top:16px">
+              <div class="connector-card"><strong data-i18n>Provider source</strong><span data-i18n>Garmin Connect or Strava, one active source per private link.</span></div>
+              <div class="connector-card"><strong data-i18n>Token model</strong><span data-i18n>Local login uploads only OAuth token bundles to the remote backend.</span></div>
+              <div class="connector-card"><strong data-i18n>Assistant prompts</strong><span data-i18n>"Summarize my last runs" and "Where is training load changing?"</span></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function previewMobile() {
+      return `
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="address">Outfit Planner App</span>
+          </div>
+          <div class="preview-content">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-top">
+                  <strong>Outfit Planner</strong>
+                  <div style="font-size:0.72rem;opacity:0.8" data-i18n>Digital wardrobe</div>
+                </div>
+                <div class="phone-list">
+                  <div class="wardrobe-row"><span class="cloth-thumb"></span><div><strong data-i18n>Linen shirt</strong><br><span data-i18n>Casual / summer</span></div></div>
+                  <div class="wardrobe-row"><span class="cloth-thumb" style="background:linear-gradient(135deg,#151515,#7a817f)"></span><div><strong data-i18n>Black trousers</strong><br><span data-i18n>Formal / evening</span></div></div>
+                  <div class="wardrobe-row"><span class="cloth-thumb" style="background:linear-gradient(135deg,#dcd7cc,#7c5d42)"></span><div><strong data-i18n>Outfit collage</strong><br><span data-i18n>3 items ready</span></div></div>
+                  <div class="mini-card" style="background:#fff;color:#2f251f"><strong data-i18n>Calendar</strong><span data-i18n>Weekly outfit planning with schedule data.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function previewOutfitWeb() {
+      return `
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="address">Outfit Planner Web</span>
+          </div>
+          <div class="preview-content">
+            <div class="mini-hero">
+              <div>
+                <h4 data-i18n>Your style starts here</h4>
+                <p data-i18n>Landing, auth, dashboard and membership flow for the Outfit Planner ecosystem.</p>
+                <span class="mini-button" data-i18n>Join -></span>
+              </div>
+              <div class="mini-visual">
+                <img src="assets/outfitplanner-armario.webp" alt="Organized wardrobe preview" data-i18n-alt="Organized wardrobe preview" />
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong data-i18n>Landing</strong><span data-i18n>Benefits, plan cards, and account-aware CTA state.</span></div>
+              <div class="mini-card"><strong data-i18n>Dashboard</strong><span data-i18n>Authenticated app surface using shared API query utilities.</span></div>
+              <div class="mini-card"><strong data-i18n>Membership</strong><span data-i18n>Free and pro subscription states routed from the web app.</span></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function previewApi() {
+      const rows = [
+        ["GET", "/clothes", "catalog"],
+        ["POST", "/outfits", "collage"],
+        ["POST", "/subscriptions/stripe-webhook", "billing"],
+        ["GET", "/schedules", "calendar"],
+        ["POST", "/background-removal", "image"],
+        ["DELETE", "/images/:id", "media"]
+      ];
+      return `
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="address">Outfit Planner API</span>
+          </div>
+          <div class="preview-content">
+            <div class="mini-hero">
+              <div>
+                <h4 data-i18n>FastAPI backend for wardrobe, outfits, plans, and payments</h4>
+                <p data-i18n>SQLAlchemy models, PostgreSQL persistence, Docker compose, Stripe webhooks, Cloudinary utilities, and image processing.</p>
+                <span class="mini-button" data-i18n>OpenAPI ready</span>
+              </div>
+              <div class="mini-visual">
+                <span class="api-mark" style="display:flex">API</span>
+              </div>
+            </div>
+            <div class="api-preview" style="margin-top:16px">
+              ${rows.map(([method, path, status]) => `
+                <div class="api-row">
+                  <span class="method ${method === "POST" ? "post" : method === "DELETE" ? "delete" : ""}">${method}</span>
+                  <code>${path}</code>
+                  <span class="status">${escapeHtml(t(status))}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPreview(project) {
+      const previews = {
+        radiadores: previewRadiadores,
+        connector: previewConnector,
+        mobile: previewMobile,
+        outfitWeb: previewOutfitWeb,
+        api: previewApi
+      };
+      previewPanel.innerHTML = previews[project.preview]();
+      translateElements(previewPanel);
+    }
+
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach((item) => {
+          item.classList.toggle("is-active", item === button);
+        });
+        const visible = projects.find((project) => activeFilter === "all" || project.category.includes(activeFilter));
+        if (visible && !visible.category.includes(activeFilter) && activeFilter !== "all") {
+          activeProjectId = visible.id;
+        }
+        if (visible && activeFilter !== "all" && !projects.find((project) => project.id === activeProjectId).category.includes(activeFilter)) {
+          activeProjectId = visible.id;
+          setActiveProject(activeProjectId);
+        } else {
+          renderProjects();
+        }
+      });
+    });
+
+    const typedPhrases = [
+      "Building full stack products.",
+      "React, Vite, TypeScript, and Expo.",
+      "FastAPI, PostgreSQL, Docker, and cloud deploys.",
+      "MCP connectors for assistant-ready systems.",
+      "Products built from interface to deployment."
+    ];
+    const typedText = document.getElementById("typedText");
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    let typingTimer;
+
+    function tickTyping() {
+      const phrase = t(typedPhrases[phraseIndex]);
+      typedText.textContent = phrase.slice(0, charIndex);
+
+      if (!deleting && charIndex < phrase.length) {
+        charIndex += 1;
+        typingTimer = setTimeout(tickTyping, 55);
+        return;
+      }
+      if (!deleting && charIndex === phrase.length) {
+        deleting = true;
+        typingTimer = setTimeout(tickTyping, 1300);
+        return;
+      }
+      if (deleting && charIndex > 0) {
+        charIndex -= 1;
+        typingTimer = setTimeout(tickTyping, 28);
+        return;
+      }
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % typedPhrases.length;
+      typingTimer = setTimeout(tickTyping, 220);
+    }
+
+    function setLanguage(language, persist = true) {
+      if (!["es", "en"].includes(language)) return;
+      currentLanguage = language;
+      document.documentElement.lang = language;
+      document.title = t("David Feng Wu | Full Stack Portfolio");
+      document.querySelector('meta[name="description"]').content = t("Full stack portfolio for David Feng Wu: web apps, mobile apps, APIs, cloud deployments, and MCP connector systems.");
+      translateElements();
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      });
+      setActiveProject(activeProjectId);
+      clearTimeout(typingTimer);
+      phraseIndex = 0;
+      charIndex = t(typedPhrases[0]).length;
+      deleting = false;
+      tickTyping();
+      if (persist) {
+        try {
+          localStorage.setItem(languageStorageKey, language);
+        } catch {
+          // A blocked storage setting should not prevent changing the language.
+        }
+      }
+    }
+
+    document.querySelectorAll("[data-language]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.language));
+    });
+
+    function createFloatingSymbols() {
+      const field = document.getElementById("symbolField");
+      const symbols = ["</>", "{}", "=>", "[]", "api", "mcp", "sql", "tsx", "docker", "vite", "expo", "auth"];
+      for (let index = 0; index < 24; index += 1) {
+        const item = document.createElement("span");
+        item.className = "float-symbol";
+        item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        item.style.left = `${Math.floor(Math.random() * 94) + 3}%`;
+        item.style.setProperty("--duration", `${12 + Math.random() * 16}s`);
+        item.style.setProperty("--delay", `${Math.random() * 12}s`);
+        item.style.setProperty("--drift", `${Math.floor(Math.random() * 90) - 45}px`);
+        field.appendChild(item);
+      }
+    }
+
+    function setupReveal() {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const value = entry.target.dataset.skill;
+          const fill = entry.target.querySelector(".skill-fill");
+          if (fill) fill.style.width = `${value}%`;
+          skillObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.35 });
+
+      document.querySelectorAll(".skill").forEach((item) => skillObserver.observe(item));
+    }
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("siteNav").classList.toggle("is-scrolled", window.scrollY > 12);
+    }, { passive: true });
+
+    createFloatingSymbols();
+    setLanguage(currentLanguage, false);
+    setupReveal();
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="72" viewBox="0 0 220 72" fill="none">
+  <rect width="72" height="72" rx="16" fill="#222222"></rect>
+  <path d="M0 0 L72 0 L0 72 Z" fill="#3B9EDB" opacity="0.1" clip-path="url(#tile-dark)"></path>
+  <clipPath id="tile-dark"><rect width="72" height="72" rx="16"></rect></clipPath>
+  <path d="M51.84 32.4 A17.28 17.28 0 1 0 39.6 51.84" stroke="#3B9EDB" stroke-width="5.76" stroke-linecap="round" fill="none"></path>
+  <path d="M39.6 51.84 L33.12 63.36 L47.52 54.72" stroke="#3B9EDB" stroke-width="4.32" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  <text x="82" y="38" font-family="&#39;Space Grotesk&#39;, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5" fill="#ffffff">FitChat</text>
+  <text x="83" y="61" font-family="&#39;DM Mono&#39;, &#39;Courier New&#39;, monospace" font-size="17" font-weight="600" letter-spacing="3.5" fill="#3B9EDB" opacity="0.85">MCP</text>
+</svg>
